@@ -1,37 +1,73 @@
 # SEC13Flist 
 
-##0.3.4.2
+## 0.3.6
+
+* fixed issue with isCusip function incorrectly returned FALSE for certain CUSIPs (issue #75)
+* fixes parsing for ISSUER_DESCRIPTION field where letter from STATUS left in it
+
+## 0.3.5.6
+
+* fixed issue with 2023 Q3 list parsing
+
+## 0.3.5.5
+
+* added `isSedol` function to check validity of SEDOL
+* added `isIsin` function to check validity of ISIN
+
+## 0.3.5.4
+
+* removed dependency on `dplyr` and `rlang`
+
+## 0.3.5.3
+
+* removed dependency on `readr`
+
+## 0.3.5.2
+
+* removed dependencies on `magrittr`, `stringr` packages by using native R pipe operator. Now requires R > 4.1.0
+* replaced `dplyr::na_if` call with base r functionality to handle changes in dplyr 1.1.0
+
+## 0.3.5.0
+
+* fixed error with `str_detect` empty string matching 
+* fixed status "D" for single `ISSUE_DESCRIPTION` outside of bounds for column
+
+## 0.3.4.3
+
+* Fixed issue with 2022 Q2 list related to incorrect parsing for one security 
+
+## 0.3.4.2
 
 * Fixed rollover bug in url_file_func() to work properly in Q1 2022
 
-##0.3.4.1
+## 0.3.4.1
 
-* removed imports of xml2 and purrr
-* rstudio cloud build
+* Removed imports of xml2 and purrr
+* RStudio cloud build
 
-##0.3.4
+## 0.3.4
 
-* fixed change on SEC.GOV landing page for list
-* adjusted tests to pass changed landing page
+* Fixed change on SEC.GOV landing page for list
+* Adjusted tests to pass changed landing page
 
-##0.3.3
+## 0.3.3
 
-* changes to accommodate rvest 1.0.0
-* added `usethis::use_github_action("check-standard")`
-* removed Travis CI
+* Changes to accommodate rvest 1.0.0
+* Added `usethis::use_github_action("check-standard")`
+* Removed Travis CI
 
-##0.3.2
+## 0.3.2
 
-* improve test coverage for `SEC_13F_list_local`
-* added github actions for test coverage
+* Improve test coverage for `SEC_13F_list_local`
+* Added github actions for test coverage
 
-##0.3.1
+## 0.3.1
 
-* added `SEC_13F_list_local` function that processes local file
-* added `fullCUSIP` function that appends checksum digit to 8-character CUSIP
+* Added `SEC_13F_list_local` function that processes local file
+* Added `fullCUSIP` function that appends checksum digit to 8-character CUSIP
 
-* internal changes: main processing of the file moved to function in `utils.R`
+* Internal changes: main processing of the file moved to function in `utils.R`
 
-##0.2.5
+## 0.2.5
 
 * Added a `NEWS.md` file to track changes to the package.

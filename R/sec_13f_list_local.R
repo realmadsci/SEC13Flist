@@ -15,22 +15,22 @@
 #' }
 #' @export
 #' @examples
-#' \dontrun{library(SEC13Flist)
-#' SEC_13F_list_2018_Q3 <- SEC_13F_list_local("/Users/user_name/Downloads/13flist2020q4.pdf")
+#' \dontrun{
+#' library(SEC13Flist)
+#' SEC_13F_list_2018_Q4 <- SEC_13F_list_local("/Users/user_name/Downloads/13flist2020q4.pdf")
 #' #Parse list from "Downloads" folder
 #' }
 #' @useDynLib SEC13Flist, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
-#' @importFrom rlang ':='
 
 SEC_13F_list_local <- function(path_to_13f_file){
 
   if(!file.exists(path_to_13f_file)) stop("Error: supplied path to SEC 13F files is invalid")
 
-  YEAR_ <- stringr::str_sub(path_to_13f_file,stringr::str_length(path_to_13f_file)-9,stringr::str_length(path_to_13f_file)-6) %>%
+  YEAR_ <- substr(path_to_13f_file,nchar(path_to_13f_file)-9,nchar(path_to_13f_file)-6) |>
     as.integer()
 
-  QUARTER_ <- stringr::str_sub(path_to_13f_file,stringr::str_length(path_to_13f_file)-4,stringr::str_length(path_to_13f_file)-4) %>%
+  QUARTER_ <- substr(path_to_13f_file,nchar(path_to_13f_file)-4,nchar(path_to_13f_file)-4) |>
     as.integer()
 
   text <- pdftools::pdf_text(path_to_13f_file)
